@@ -31,6 +31,29 @@
 - [/webp/view/build/outputs/apk/release/view-release.apk](https://github.com/HyundongHwang/android-ndk/raw/master/webp/view/build/outputs/apk/release/view-release.apk)
 
 
+```powershell
+ls -Directory -Exclude ".*" | 
+foreach { 
+	write "`n`n`n`n`n`n`n`n`n`n"
+	write "PROJECT DIR : $($_.FullName)"
+	write "`n`n`n"
+	cd $_.FullName
+	./gradlew clean
+	./gradlew assembleRelease --daemon --stacktrace
+	
+	ls "*-release.apk" -Recurse | 
+	foreach { 
+		write "`n`n`n"
+		write "APK FILE PATH : $($_.FullName )"
+		write "adb install ..."
+		write "`n`n`n"
+		adb install -r $_.FullName 
+	}
+
+	cd ..
+	pause
+} | tee -FilePath build.log
+```
 
 
 
