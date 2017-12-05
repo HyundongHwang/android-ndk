@@ -1,28 +1,37 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion = 26
-
+    compileSdkVersion 27
+    buildToolsVersion "27.0.1"
     defaultConfig {
         applicationId = 'com.example.widecolor'
-        minSdkVersion   26
-        targetSdkVersion  26
+        minSdkVersion 19
+        targetSdkVersion 27
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
         externalNativeBuild {
             cmake {
                 arguments '-DANDROID_PLATFORM=android-26',
-                          '-DANDROID_TOOLCHAIN=clang',
-                          '-DANDROID_STL=c++_static'
+                        '-DANDROID_TOOLCHAIN=clang',
+                        '-DANDROID_STL=c++_static'
             }
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file('../../debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
         }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
+                          'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     externalNativeBuild {
@@ -36,19 +45,19 @@ android {
 List<String> TARGET_DIR = [projectDir.toString() + '/../third_party/mathfu',
                            projectDir.toString() + '/../third_party/stb']
 List<List<String>> GIT_PARAMETERS =
-       [['clone', '--recursive', 'https://github.com/google/mathfu.git', 'mathfu'],
-        ['clone', '--recursive', 'https://github.com/nothings/stb.git', 'stb']]
+        [['clone', '--recursive', 'https://github.com/google/mathfu.git', 'mathfu'],
+         ['clone', '--recursive', 'https://github.com/nothings/stb.git', 'stb']]
 List<String> WORKING_DIR = [projectDir.toString() + '/../third_party',
                             projectDir.toString() + '/../third_party']
 for (int i = 0; i < TARGET_DIR.size(); i++) {
     if (!file(TARGET_DIR[i].toString()).exists()) {
-       if(!file(WORKING_DIR[i].toString()).exists())
-           file(WORKING_DIR[i].toString()).mkdir()
-       exec {
-           workingDir(file(WORKING_DIR[i].toString()))
-           executable "git"
-           args GIT_PARAMETERS[i]
-       }
+        if (!file(WORKING_DIR[i].toString()).exists())
+            file(WORKING_DIR[i].toString()).mkdir()
+        exec {
+            workingDir(file(WORKING_DIR[i].toString()))
+            executable "git"
+            args GIT_PARAMETERS[i]
+        }
     }
 }
 

@@ -26,12 +26,10 @@ import android.graphics.Canvas;
 import android.view.Display;
 import android.view.WindowManager;
 
-public class Plasma extends Activity
-{
+public class Plasma extends Activity {
     // Called when the activity is first created.
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Display display = getWindowManager().getDefaultDisplay();
         Point displaySize = new Point();
@@ -55,7 +53,7 @@ class PlasmaView extends View {
     private long mStartTime;
 
     // implementend by libplasma.so
-    private static native void renderPlasma(Bitmap  bitmap, long time_ms);
+    private static native void renderPlasma(Bitmap bitmap, long time_ms);
 
     public PlasmaView(Context context, int width, int height) {
         super(context);
@@ -63,7 +61,8 @@ class PlasmaView extends View {
         mStartTime = System.currentTimeMillis();
     }
 
-    @Override protected void onDraw(Canvas canvas) {
+    @Override
+    protected void onDraw(Canvas canvas) {
         renderPlasma(mBitmap, System.currentTimeMillis() - mStartTime);
         canvas.drawBitmap(mBitmap, 0, 0, null);
         // force a redraw, with a different time-based pattern.

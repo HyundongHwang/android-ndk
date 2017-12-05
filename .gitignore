@@ -8,3 +8,6 @@ build
 libwebp
 .DS_Store
 
+
+
+display-p3/third_party/**
