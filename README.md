@@ -121,7 +121,7 @@ foreach {
 ```
 
 ## 전체빌드 로그파일
-- [/blob/master/build.log](/blob/master/build.log)
+- [/blob/master/build.log](https://github.com/HyundongHwang/android-ndk/blob/master/build.log)
 
 
 <br>
