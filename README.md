@@ -6,7 +6,6 @@
     - [전체빌드, 설치 스크립트](#%EC%A0%84%EC%B2%B4%EB%B9%8C%EB%93%9C-%EC%84%A4%EC%B9%98-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8)
     - [전체빌드 로그파일](#%EC%A0%84%EC%B2%B4%EB%B9%8C%EB%93%9C-%EB%A1%9C%EA%B7%B8%ED%8C%8C%EC%9D%BC)
 - [original README.md](#original-readmemd)
-- [NDK Samples ](#ndk-samples)
     - [Build Steps](#build-steps)
     - [Debugging](#debugging)
     - [Support](#support)
@@ -134,8 +133,8 @@ foreach {
 
 
 NDK Samples 
-[![Build Status](https://travis-ci.org/googlesamples/android-ndk.svg?branch=master)]
-(https://travis-ci.org/googlesamples/android-ndk) [![Build status](https://ci.appveyor.com/api/projects/status/48tbtqwg4heytmnq?svg=true)](https://ci.appveyor.com/project/proppy/android-ndk)
+- [![Build Status](https://travis-ci.org/googlesamples/android-ndk.svg?branch=master)]
+- (https://travis-ci.org/googlesamples/android-ndk) [![Build status](https://ci.appveyor.com/api/projects/status/48tbtqwg4heytmnq?svg=true)](https://ci.appveyor.com/project/proppy/android-ndk)
 ===========
 
 This repository contains [Android NDK][0] samples with Android Studio [C++ integration](https://www.youtube.com/watch?v=f7ihSQ44WO0&feature=youtu.be).
