@@ -132,8 +132,8 @@ foreach {
 # original README.md
 
 
-NDK Samples 
-- [![Build Status](https://travis-ci.org/googlesamples/android-ndk.svg?branch=master)]
+NDK Samples
+- NDK Samples [![Build Status](https://travis-ci.org/googlesamples/android-ndk.svg?branch=master)]
 - (https://travis-ci.org/googlesamples/android-ndk) [![Build status](https://ci.appveyor.com/api/projects/status/48tbtqwg4heytmnq?svg=true)](https://ci.appveyor.com/project/proppy/android-ndk)
 ===========
 
