@@ -1,3 +1,25 @@
+<!-- TOC -->
+
+- [apk 파일 다운로드](#apk-%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C)
+- [빌드](#%EB%B9%8C%EB%93%9C)
+    - [빌드환경](#%EB%B9%8C%EB%93%9C%ED%99%98%EA%B2%BD)
+    - [전체빌드, 설치 스크립트](#%EC%A0%84%EC%B2%B4%EB%B9%8C%EB%93%9C-%EC%84%A4%EC%B9%98-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8)
+    - [전체빌드 로그파일](#%EC%A0%84%EC%B2%B4%EB%B9%8C%EB%93%9C-%EB%A1%9C%EA%B7%B8%ED%8C%8C%EC%9D%BC)
+- [original README.md](#original-readmemd)
+- [NDK Samples [![Build Status](https://travis-ci.org/googlesamples/android-ndk.svg?branch=master)](https://travis-ci.org/googlesamples/android-ndk) [![Build status](https://ci.appveyor.com/api/projects/status/48tbtqwg4heytmnq?svg=true)](https://ci.appveyor.com/project/proppy/android-ndk)](#ndk-samples-build-statushttpstravis-ciorggooglesamplesandroid-ndksvgbranchmasterhttpstravis-ciorggooglesamplesandroid-ndk-build-statushttpsciappveyorcomapiprojectsstatus48tbtqwg4heytmnqsvgtruehttpsciappveyorcomprojectproppyandroid-ndk)
+    - [Build Steps](#build-steps)
+    - [Debugging](#debugging)
+    - [Support](#support)
+    - [License](#license)
+
+<!-- /TOC -->
+
+<br>
+<br>
+<br>
+
+# apk 파일 다운로드
+
 - [/audio-echo/app/build/outputs/apk/release/app-release.apk](https://github.com/HyundongHwang/android-ndk/raw/master/audio-echo/app/build/outputs/apk/release/app-release.apk)
 - [/bitmap-plasma/app/build/outputs/apk/release/app-release.apk](https://github.com/HyundongHwang/android-ndk/raw/master/bitmap-plasma/app/build/outputs/apk/release/app-release.apk)
 - [/camera/basic/build/outputs/apk/release/basic-release.apk](https://github.com/HyundongHwang/android-ndk/raw/master/camera/basic/build/outputs/apk/release/basic-release.apk)
@@ -31,6 +53,51 @@
 - [/webp/view/build/outputs/apk/release/view-release.apk](https://github.com/HyundongHwang/android-ndk/raw/master/webp/view/build/outputs/apk/release/view-release.apk)
 
 
+<br>
+<br>
+<br>
+
+
+# 빌드
+
+## 빌드환경
+- Windows 10 64bit
+- Gradle 4.4
+- CMake	3.6.4111459
+- lldb 3.0
+- android
+
+```groovy
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.1"
+
+    defaultConfig {
+ 		...       
+ 		minSdkVersion 19
+        targetSdkVersion 27
+		...
+    }
+    signingConfigs {
+        release {
+            storeFile file('../../debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+    buildTypes {
+        release {
+			...            
+			signingConfig signingConfigs.release
+        }
+    }
+	...
+}
+```
+
+## 전체빌드, 설치 스크립트
+
 ```powershell
 ls -Directory -Exclude ".*" | 
 foreach { 
@@ -51,10 +118,19 @@ foreach {
 	}
 
 	cd ..
-	pause
 } | tee -FilePath build.log
 ```
 
+## 전체빌드 로그파일
+- [/blob/master/build.log](/blob/master/build.log)
+
+
+<br>
+<br>
+<br>
+
+
+# original README.md
 
 
 NDK Samples [![Build Status](https://travis-ci.org/googlesamples/android-ndk.svg?branch=master)](https://travis-ci.org/googlesamples/android-ndk) [![Build status](https://ci.appveyor.com/api/projects/status/48tbtqwg4heytmnq?svg=true)](https://ci.appveyor.com/project/proppy/android-ndk)
